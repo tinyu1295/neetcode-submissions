@@ -1,0 +1,21 @@
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        bucket = [0]*len(set(nums))
+        if len(bucket)<2:
+            return nums
+        for i in range(0, len(nums)):
+            bucket[nums[i]]+=1
+        index = 0
+        for i in range(0, len(bucket)):
+            while bucket[i]:
+                bucket[i] -=1
+                nums[index] = i
+                index+=1
+        
+        return nums
+        
+
+        
